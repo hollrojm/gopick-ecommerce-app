@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -89,7 +90,8 @@ class LoginPage extends StatelessWidget {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  margin: const EdgeInsets.only(left: 25, right: 25, top: 25),
+                  margin: const EdgeInsets.only(
+                      left: 25, right: 25, top: 25, bottom: 10),
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {},
@@ -101,11 +103,30 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Text('No tienes cuenta?'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(left: 5, right: 5),
+                      width: 65,
+                      height: 1,
+                      color: Colors.white,
+                    ),
+                    const Text(
+                      'No tienes cuenta?',
+                      style: TextStyle(color: Colors.white, fontSize: 17),
+                    ),
+                    Container(
+                      width: 65,
+                      height: 1,
+                      color: Colors.white,
+                    ),
+                  ],
+                ),
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  margin:
-                      const EdgeInsets.only(left: 25, right: 25, bottom: 10),
+                  margin: const EdgeInsets.only(
+                      left: 25, right: 25, top: 10, bottom: 10),
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {},
