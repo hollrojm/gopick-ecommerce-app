@@ -1,5 +1,5 @@
+import 'package:ecommerce_flutter/presentation/presentation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -48,44 +48,23 @@ class LoginPage extends StatelessWidget {
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 25, right: 25),
-                  child: const TextField(
-                    decoration: InputDecoration(
-                      label: Text(
-                        'Correo Electrónico',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-                      ),
-                      prefixIcon: Icon(
-                        Icons.email,
-                        color: Colors.white,
-                      ),
-                    ),
+                  child: DefaultTextField(
+                    label: 'Correo Electrónico',
+                    icon: Icons.email,
+                    onChanged: (text) {
+                      print('Text:${text}');
+                    },
                   ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 25, right: 25),
-                  child: const TextField(
-                    decoration: InputDecoration(
-                      label: Text(
-                        'Contraseña',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-                      ),
-                      prefixIcon: Icon(
-                        Icons.lock,
-                        color: Colors.white,
-                      ),
-                    ),
+                  child: DefaultTextField(
+                    obscureText: true,
+                    label: 'Contraseña',
+                    icon: Icons.lock,
+                    onChanged: (text) {
+                      print('Text:${text}');
+                    },
                   ),
                 ),
                 Container(
