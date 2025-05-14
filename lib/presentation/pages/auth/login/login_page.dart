@@ -1,11 +1,27 @@
+import 'package:ecommerce_flutter/presentation/pages/auth/login/bloc/login_bloc_cubit.dart';
 import 'package:ecommerce_flutter/presentation/presentation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
   @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  LoginBlocCubit? _loginBlocCubit;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    _loginBlocCubit = BlocProvider.of<LoginBlocCubit>(context, listen: false);
+
     return Scaffold(
         body: SizedBox(
       width: double.infinity,
@@ -48,24 +64,32 @@ class LoginPage extends StatelessWidget {
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 25, right: 25),
-                  child: DefaultTextField(
-                    label: 'Correo Electrónico',
-                    icon: Icons.email,
-                    onChanged: (text) {
-                      print('Text:${text}');
-                    },
-                  ),
+                  child: StreamBuilder(
+                      stream: _loginBlocCubit!.emailStream,
+                      builder: (context, snapshot) {
+                        return DefaultTextField(
+                          label: 'Correo Electrónico',
+                          icon: Icons.email,
+                          onChanged: (text) {
+                            _loginBlocCubit!.changeEmail(text);
+                          },
+                        );
+                      }),
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 25, right: 25),
-                  child: DefaultTextField(
-                    obscureText: true,
-                    label: 'Contraseña',
-                    icon: Icons.lock,
-                    onChanged: (text) {
-                      print('Text:${text}');
-                    },
-                  ),
+                  child: StreamBuilder(
+                      stream: _loginBlocCubit!.passwordStream,
+                      builder: (context, snapshot) {
+                        return DefaultTextField(
+                          obscureText: true,
+                          label: 'Contraseña',
+                          icon: Icons.lock,
+                          onChanged: (text) {
+                            _loginBlocCubit!.changePassword(text);
+                          },
+                        );
+                      }),
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
