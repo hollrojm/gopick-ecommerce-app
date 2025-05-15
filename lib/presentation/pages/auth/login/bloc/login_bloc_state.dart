@@ -1,3 +1,3 @@
-abstract class LoginBloc {}
+abstract class LoginBlocState {}
 
-class LoginInitial extends LoginBloc {}
+class LoginInitial extends LoginBlocState {}

@@ -16,6 +16,9 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPersistentFrameCallback((timeStamp) {
+      _loginBlocCubit!.dispose();
+    });
   }
 
   @override
@@ -96,15 +99,28 @@ class _LoginPageState extends State<LoginPage> {
                   margin: const EdgeInsets.only(
                       left: 25, right: 25, top: 25, bottom: 10),
                   height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style:
-                        ElevatedButton.styleFrom(backgroundColor: Colors.green),
-                    child: const Text(
-                      'Iniciar Sesión',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
+                  child: StreamBuilder(
+                      stream: _loginBlocCubit!.validateForm,
+                      builder: (context, snapshot) {
+                        return ElevatedButton(
+                          onPressed: () {
+                            if (snapshot.hasData) {
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Error en el formulario'),
+                                ),
+                              );
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.green),
+                          child: const Text(
+                            'Iniciar Sesión',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        );
+                      }),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
