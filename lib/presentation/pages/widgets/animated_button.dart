@@ -33,7 +33,8 @@ class AnimatedBtn extends StatelessWidget {
                     ),
                     Text(
                       'Comenzar',
-                      style: TextStyle(fontWeight: FontWeight.w600),
+                      style:
+                          TextStyle(fontWeight: FontWeight.w600, fontSize: 17),
                     ),
                   ],
                 ),
