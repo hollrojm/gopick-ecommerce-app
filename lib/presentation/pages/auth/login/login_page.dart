@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
                 width: MediaQuery.of(context).size.width * 0.9,
                 height: MediaQuery.of(context).size.height * 0.75,
                 decoration: const BoxDecoration(
-                  color: Colors.white,
+                  color: Colors.amber,
                   borderRadius: BorderRadius.all(
                     Radius.circular(25),
                   ),
