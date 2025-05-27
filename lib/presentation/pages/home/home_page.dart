@@ -51,50 +51,56 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.symmetric(
                 horizontal: 32,
               ),
-              child: SizedBox(
-                width: 326,
-                child: Column(
-                  children: [
-                    const Text(
-                      "Bienvenido a la\ntienda",
-                      style: TextStyle(
-                        fontSize: 56,
-                        fontFamily: "Poppins",
-                        height: 1.2,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    const Text(
-                      'Explora nuestros productos y ofertas',
-                      style: TextStyle(
-                        fontSize: 20,
-                        height: 1.2,
-                      ),
-                    ),
-                    Spacer(),
-                    AnimatedBtn(
-                      btnAnimationController: _btnAnimationController,
-                      press: () {
-                        _btnAnimationController.isActive = true;
-                        Future.delayed(const Duration(milliseconds: 1000), () {
-                          Navigator.pushNamed(context, 'login');
-                        });
-                      },
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 24),
-                      child: Text(
-                        'Al ingresar acedes a nuestros productos y ofertas',
-                        style: TextStyle(
-                          fontSize: 15,
-                          height: 1.2,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Spacer(),
+                  const SizedBox(
+                    width: 326,
+                    child: Column(
+                      children: [
+                        Text(
+                          "Bienvenido a la\ntienda",
+                          style: TextStyle(
+                            fontSize: 56,
+                            fontFamily: "Poppins",
+                            height: 1.2,
+                          ),
                         ),
+                        SizedBox(
+                          height: 16,
+                        ),
+                        Text(
+                          'Explora nuestros productos y ofertas',
+                          style: TextStyle(
+                            fontSize: 20,
+                            height: 1.2,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  const Spacer(flex: 2),
+                  AnimatedBtn(
+                    btnAnimationController: _btnAnimationController,
+                    press: () {
+                      _btnAnimationController.isActive = true;
+                      Future.delayed(const Duration(milliseconds: 1000), () {
+                        Navigator.pushNamed(context, 'login');
+                      });
+                    },
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 24),
+                    child: Text(
+                      'Al ingresar acedes a nuestros productos y ofertas',
+                      style: TextStyle(
+                        fontSize: 15,
+                        height: 1.2,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           )
